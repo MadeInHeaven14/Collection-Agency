@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="370a7786e98d4f6a836824d601c5d632" Name="Diagram1">
+        <EntityTypeShape EntityType="CollectionAgencyModel.Client" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollectionAgencyModel.Collector" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollectionAgencyModel.Debt" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollectionAgencyModel.Debt_Client" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollectionAgencyModel.Debt_Finish" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollectionAgencyModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="CollectionAgencyModel.FK_Client_Collector" ManuallyRouted="false" />
+        <AssociationConnector Association="CollectionAgencyModel.FK_Debt_Client_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="CollectionAgencyModel.FK_Debt_Client_Debt" ManuallyRouted="false" />
+        <AssociationConnector Association="CollectionAgencyModel.FK_Debt_Client_Debt_Finish" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,21 @@
+﻿<Window x:Class="CollectionAgency.ClientAddPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CollectionAgency"
+        mc:Ignorable="d"
+        Title="ClientAddPage" Height="559" Width="800">
+    <Grid>
+        <Label Content="Добавление клиента" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="36"/>
+        <TextBox x:Name="tb_Sum" HorizontalAlignment="Left" Margin="259,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="288" Height="41" FontSize="20"/>
+        <TextBox x:Name="tb_Percent" HorizontalAlignment="Left" Margin="259,352,0,0" VerticalAlignment="Top" Width="288" Height="41" FontSize="20"/>
+        <Label Content="Сумма долга" HorizontalAlignment="Left" Margin="259,238,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Процент" HorizontalAlignment="Left" Margin="259,313,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="btn_ClientAdd" Content="Добавить клиента" HorizontalAlignment="Left" Margin="310,422,0,0" VerticalAlignment="Top" Height="43" Width="186" FontWeight="Bold" FontSize="18" Click="btn_ClientAdd_Click"/>
+        <TextBox x:Name="tb_FIO" HorizontalAlignment="Left" Margin="259,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="288" Height="41" FontSize="20"/>
+        <Label Content="FIO" HorizontalAlignment="Left" Margin="259,73,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <TextBox x:Name="tb_Address" HorizontalAlignment="Left" Margin="259,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="288" Height="41" FontSize="20"/>
+        <Label Content="Адрес" HorizontalAlignment="Left" Margin="259,158,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+    </Grid>
+</Window>

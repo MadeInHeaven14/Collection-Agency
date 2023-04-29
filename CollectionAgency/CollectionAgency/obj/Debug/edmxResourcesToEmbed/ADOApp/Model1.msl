@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище CollectionAgencyModelContainer" CdmEntityContainer="CollectionAgencyEntities5">
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="CollectionAgencyModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Collector_ID" ColumnName="Collector_ID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Collector">
+      <EntityTypeMapping TypeName="CollectionAgencyModel.Collector">
+        <MappingFragment StoreEntitySet="Collector">
+          <ScalarProperty Name="ID_Collector" ColumnName="ID_Collector" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Debt">
+      <EntityTypeMapping TypeName="CollectionAgencyModel.Debt">
+        <MappingFragment StoreEntitySet="Debt">
+          <ScalarProperty Name="ID_Debt" ColumnName="ID_Debt" />
+          <ScalarProperty Name="Sum" ColumnName="Sum" />
+          <ScalarProperty Name="Percent" ColumnName="Percent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Debt_Client">
+      <EntityTypeMapping TypeName="CollectionAgencyModel.Debt_Client">
+        <MappingFragment StoreEntitySet="Debt_Client">
+          <ScalarProperty Name="ID_Debt_Client" ColumnName="ID_Debt_Client" />
+          <ScalarProperty Name="Debt_ID" ColumnName="Debt_ID" />
+          <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+          <ScalarProperty Name="Debt_Finish_ID" ColumnName="Debt_Finish_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Debt_Finish">
+      <EntityTypeMapping TypeName="CollectionAgencyModel.Debt_Finish">
+        <MappingFragment StoreEntitySet="Debt_Finish">
+          <ScalarProperty Name="ID_Debt_Finish" ColumnName="ID_Debt_Finish" />
+          <ScalarProperty Name="Is_Debt_Finish" ColumnName="Is_Debt_Finish" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CollectionAgencyModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище CollectionAgencyModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище CollectionAgencyModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище CollectionAgencyModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище CollectionAgencyModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CollectionAgencyModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище CollectionAgencyModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CollectionAgencyModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище CollectionAgencyModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище CollectionAgencyModel.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

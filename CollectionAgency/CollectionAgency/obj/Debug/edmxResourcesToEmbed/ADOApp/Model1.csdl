@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CollectionAgencyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID_Client" />
+    </Key>
+    <Property Name="ID_Client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Collector_ID" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Collector" Relationship="Self.FK_Client_Collector" FromRole="Client" ToRole="Collector" />
+    <NavigationProperty Name="Debt_Client" Relationship="Self.FK_Debt_Client_Client" FromRole="Client" ToRole="Debt_Client" />
+  </EntityType>
+  <EntityType Name="Collector">
+    <Key>
+      <PropertyRef Name="ID_Collector" />
+    </Key>
+    <Property Name="ID_Collector" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Client_Collector" FromRole="Collector" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="Debt">
+    <Key>
+      <PropertyRef Name="ID_Debt" />
+    </Key>
+    <Property Name="ID_Debt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sum" Type="Double" Nullable="false" />
+    <Property Name="Percent" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Debt_Client" Relationship="Self.FK_Debt_Client_Debt" FromRole="Debt" ToRole="Debt_Client" />
+  </EntityType>
+  <EntityType Name="Debt_Client">
+    <Key>
+      <PropertyRef Name="ID_Debt_Client" />
+    </Key>
+    <Property Name="ID_Debt_Client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Debt_ID" Type="Int32" Nullable="false" />
+    <Property Name="Client_ID" Type="Int32" Nullable="false" />
+    <Property Name="Debt_Finish_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Debt_Client_Client" FromRole="Debt_Client" ToRole="Client" />
+    <NavigationProperty Name="Debt" Relationship="Self.FK_Debt_Client_Debt" FromRole="Debt_Client" ToRole="Debt" />
+    <NavigationProperty Name="Debt_Finish" Relationship="Self.FK_Debt_Client_Debt_Finish" FromRole="Debt_Client" ToRole="Debt_Finish" />
+  </EntityType>
+  <EntityType Name="Debt_Finish">
+    <Key>
+      <PropertyRef Name="ID_Debt_Finish" />
+    </Key>
+    <Property Name="ID_Debt_Finish" Type="Int32" Nullable="false" />
+    <Property Name="Is_Debt_Finish" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Debt_Client" Relationship="Self.FK_Debt_Client_Debt_Finish" FromRole="Debt_Finish" ToRole="Debt_Client" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Client_Collector">
+    <End Role="Collector" Type="Self.Collector" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Collector">
+        <PropertyRef Name="ID_Collector" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="Collector_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Debt_Client_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Debt_Client" Type="Self.Debt_Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ID_Client" />
+      </Principal>
+      <Dependent Role="Debt_Client">
+        <PropertyRef Name="Client_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Debt_Client_Debt">
+    <End Role="Debt" Type="Self.Debt" Multiplicity="1" />
+    <End Role="Debt_Client" Type="Self.Debt_Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Debt">
+        <PropertyRef Name="ID_Debt" />
+      </Principal>
+      <Dependent Role="Debt_Client">
+        <PropertyRef Name="Debt_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Debt_Client_Debt_Finish">
+    <End Role="Debt_Finish" Type="Self.Debt_Finish" Multiplicity="1" />
+    <End Role="Debt_Client" Type="Self.Debt_Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Debt_Finish">
+        <PropertyRef Name="ID_Debt_Finish" />
+      </Principal>
+      <Dependent Role="Debt_Client">
+        <PropertyRef Name="Debt_Finish_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CollectionAgencyEntities5" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Collector" EntityType="Self.Collector" />
+    <EntitySet Name="Debt" EntityType="Self.Debt" />
+    <EntitySet Name="Debt_Client" EntityType="Self.Debt_Client" />
+    <EntitySet Name="Debt_Finish" EntityType="Self.Debt_Finish" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Client_Collector" Association="Self.FK_Client_Collector">
+      <End Role="Collector" EntitySet="Collector" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Debt_Client_Client" Association="Self.FK_Debt_Client_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Debt_Client" EntitySet="Debt_Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Debt_Client_Debt" Association="Self.FK_Debt_Client_Debt">
+      <End Role="Debt" EntitySet="Debt" />
+      <End Role="Debt_Client" EntitySet="Debt_Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Debt_Client_Debt_Finish" Association="Self.FK_Debt_Client_Debt_Finish">
+      <End Role="Debt_Finish" EntitySet="Debt_Finish" />
+      <End Role="Debt_Client" EntitySet="Debt_Client" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CollectionAgencyModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CollectionAgencyModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

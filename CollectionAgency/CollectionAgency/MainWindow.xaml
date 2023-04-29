@@ -1,0 +1,19 @@
+﻿<Window x:Class="CollectionAgency.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CollectionAgency"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="Авторизация" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="36"/>
+        <TextBox x:Name="tb_Login" HorizontalAlignment="Center" Margin="0,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="288" Height="41" FontSize="20"/>
+        <PasswordBox x:Name="tb_Password" HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" Width="288" Height="41" FontSize="20"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="256,73,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="256,183,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="btn_SignIn" Content="Sign In" HorizontalAlignment="Center" Margin="0,287,0,0" VerticalAlignment="Top" Height="43" Width="104" FontWeight="Bold" FontSize="18" Click="btn_SignIn_Click"/>
+        <Button x:Name="btn_SignUp" Content="Sign Up" HorizontalAlignment="Center" Margin="0,349,0,0" VerticalAlignment="Top" Height="43" Width="104" FontWeight="Bold" FontSize="18" Click="btn_SignUp_Click"/>
+        
+    </Grid>
+</Window>
